@@ -17,7 +17,7 @@
 
 ---
 
-## 🎮 Inspiration
+## Inspiration
 
 **Blob Divide** draws heavy inspiration from Valve's iconic *Portal 2* test chambers, reimagining the puzzle-solving experience with a unique split-merge mechanic. Instead of creating portals, you split yourself.
 
@@ -29,9 +29,7 @@
 
 ---
 
-## 🧩 Game Logic & Mechanics
-
-### Core Mechanic: Split & Merge
+## Mechanics
 
 The heart of Blob Divide is the split-merge system:
 
@@ -86,39 +84,7 @@ Single Blob (E) → Split → BlobA (Green) + BlobB (Cyan)
 
 ---
 
-## 🎯 Features
-
-### ✅ Implemented
-
-- [x] **Split/Merge System** — Seamless blob division and recombination
-- [x] **Dual Character Control** — Simultaneous WASD + Arrow key control
-- [x] **3D Movement** — Full freedom of movement in all directions
-- [x] **Dynamic Camera** — Behind-blob perspective with Tab switching
-- [x] **Physics-Based Puzzles** — Realistic stone pushing, gravity, collision
-- [x] **Animated Character** — Walk and idle animations with smooth blending
-- [x] **Visual Feedback** — Color-coded blobs, glowing doors, button states
-- [x] **Portal 2-Style Chambers** — Clean, enclosed test chamber aesthetic
-- [x] **Pressure Button System** — Multi-button support, gate control
-- [x] **Pushable Objects** — Weighted stones with realistic physics
-
-### 🚧 In Progress
-
-- [ ] **Level Progression** — Multiple test chambers with increasing difficulty
-- [ ] **Sound Design** — Footsteps, button presses, ambient chamber sounds
-- [ ] **UI/HUD** — Timer display, controls hint, level number
-- [ ] **Death/Respawn** — Fall detection and checkpoint system
-
----
-
 ## 🏗️ Technical Details
-
-### Built With
-
-- **Engine:** Unity 6.2 (Built-in Render Pipeline)
-- **Language:** C#
-- **Platform:** PC (Windows/Mac/Linux)
-- **Art Style:** Low-poly minimalist
-- **Target:** 60 FPS
 
 ### Core Scripts
 
@@ -172,7 +138,7 @@ BlobDivide/
 
 ---
 
-## 🚀 Getting Started
+## Get Started
 
 ### Prerequisites
 
@@ -206,7 +172,7 @@ BlobDivide/
 ### Objective
 Navigate through test chambers by splitting yourself into two blobs, solving puzzles that require presence in multiple locations, then merging to reach the exit.
 
-### Basic Puzzle Flow
+### Example
 
 1. **Start**: Spawn as single merged blob
 2. **Split** (E): Divide into green and cyan blobs
@@ -220,26 +186,9 @@ Navigate through test chambers by splitting yourself into two blobs, solving puz
 5. **Merge**: Move blobs close together (auto-merge at 3 units)
 6. **Exit**: Enter the door as merged blob
 
-### Example Puzzle Solution
-
-**Chamber 01: Two-Button Gate**
-
-```
-Problem: Gate blocks path, needs two buttons pressed
-
-Solution:
-1. Split blob (E)
-2. Position BlobA (green) on Button 1
-3. Switch camera to BlobB (Tab)
-4. Move BlobB (cyan) through opened gate to Button 2
-5. Both buttons held → Gate stays open
-6. Move both blobs to exit area
-7. Blobs auto-merge (get within 3 units)
-8. Enter exit door → Level complete!
-```
 ---
 
-## 📝 Contributing
+## Contribution
 
 Contributions are welcome! Whether it's:
 
@@ -257,15 +206,11 @@ Contributions are welcome! Whether it's:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
----
-
-## 📜 License
+## License
 
 This project is licensed under the MIT License.
 
----
-
-## 🙏 Acknowledgments
+## Acknowledgments
 
 ### Inspiration & References
 - **Valve** — Portal 2 for test chamber design inspiration
