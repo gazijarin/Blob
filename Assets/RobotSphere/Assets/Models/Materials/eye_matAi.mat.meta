@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f5da68cd484f44ced9e11ab1ad6a9c1a
+timeCreated: 1494249277
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136226
+  packageName: Robot Sphere
+  packageVersion: 1.3
+  assetPath: Assets/RobotSphere/Assets/Models/Materials/eye_matAi.mat
+  uploadId: 350919

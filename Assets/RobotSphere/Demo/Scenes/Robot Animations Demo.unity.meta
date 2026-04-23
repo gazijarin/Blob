@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 938ace6a044a848858364788d9cac322
+timeCreated: 1494251170
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136226
+  packageName: Robot Sphere
+  packageVersion: 1.3
+  assetPath: Assets/RobotSphere/Demo/Scenes/Robot Animations Demo.unity
+  uploadId: 350919

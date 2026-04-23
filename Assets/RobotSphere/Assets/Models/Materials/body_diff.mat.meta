@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9f2645559b8b14773b709fbd9bd6e2ff
+timeCreated: 1494249277
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136226
+  packageName: Robot Sphere
+  packageVersion: 1.3
+  assetPath: Assets/RobotSphere/Assets/Models/Materials/body_diff.mat
+  uploadId: 350919

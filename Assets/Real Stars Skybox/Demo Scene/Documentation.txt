@@ -1,0 +1,36 @@
+Real Stars Skybox is a free asset providing three skyboxes of the stars in the night sky. Easy to set up and use for games or educational purposes.
+
+
+Instructions for use:
+In the Demo Scene, one of the skyboxes (StarSkybox04NamedConstell) is attached as a skybox component to the camera object Skybox Camera. This camera is tagged "SkyboxCamera" rather than main camera. The Skybox Camera is also saved as a prefab in the Demo Scene folder.
+
+You can set up your own scenes using the skyboxes provided in your preferred way, or you can drag the Skybox Camera prefab (as a second camera) into your existing scenes and change the clear flag on your Main Camera to "depth only".
+
+The skybox is *not* added as a general skybox in the "Lighting Settings". Nor does the skybox provide scene illumination or reflections. You can still make use of these Unity features by updating the Lighting Settings, but they are not enabled in the demo scene.
+
+One way of adding scene reflections wihout having a skybox set up in Lighting Settings is by adding a cubmap. There are Legacy Cubemap materials for each skybox if you want to try that.
+
+
+Details of the skyboxes:
+Three skyboxes are provided, each in the own folder. Each skybox is a 6-sided cube with each side at 2048x2048 resolution. The sides are numbered 1 to 6 corresponding with +Z,-Z,+X,-X,+Y,-Y.
+StarSkybox04 is a plain image of the night sky
+StarSkybox04Named has the names of some stars in white
+StarSkybox04NamedConstell additionally has the outlines and named of the constellations in red
+
+
+Astronomical details:
+The skyboxes are generated using real astronomical data for the 5000 brightest stars in the sky. The size, brightness and colour of each star is based on its real magnitude and spectroscopic data. Polaris, the North Star is in the +Y direction and the 0 line of Right Ascension (passing through Pisces) is in the +Z direction.
+
+The data for the stars was taken from the HYG database (The Astronomy Nexus http://www.astronexus.com/hyg by David Nash) and licensed uynder Attribution-ShareAlike 2.5 Generic (CC BY-SA 2.5) (https://creativecommons.org/licenses/by-sa/2.5/)
+
+"Constellations" are 88 regions of the sky defined by the International Astronomical Union (IAU), each containing many stars. "Asterisms" are the shapes you can make by drawing lines between the stars. None of the skyboxes show any asterisms, though some constellations are named after asterisms they contain (or vice versa).
+
+The boundaries of the constellations should follow the curved lines of Right Ascension and Declination. The StarSkybox04NamedConstell skybox uses straight lines for simplicity. This is most noticeable near the poles.
+
+
+Plus version:
+This is the free version of this asset. A paid version, "Real Stars Skybox Plus" is also available for $5 on the Unity Asset Store. Please check it out at https://assetstore.unity.com/packages/3d/environments/sci-fi/real-stars-skybox-plus-151290
+
+The Plus version of the asset provides even higher resolution images at 4096x4096 per side of the skybox, plus cylindrical equirectangular projections of the whole sky at 8192x4096.
+
+More significantly, "Real Stars Skybox Plus" includes a Skybox Camera Script. If you provide that script with a longitude, latitude, date and time, the skybox will orient itself to show the real night sky visible at that position on the Earth at that moment in time. The skybox script in the paid asset could be used to help build a simple planetarium or a game where it is possible to navigate by the stars.

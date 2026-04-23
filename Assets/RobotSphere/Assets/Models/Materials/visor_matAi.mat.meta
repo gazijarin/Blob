@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 01377584c22b84f819ecac7f4047c921
+timeCreated: 1494249277
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136226
+  packageName: Robot Sphere
+  packageVersion: 1.3
+  assetPath: Assets/RobotSphere/Assets/Models/Materials/visor_matAi.mat
+  uploadId: 350919

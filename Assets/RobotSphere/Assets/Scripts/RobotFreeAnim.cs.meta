@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: cdfe52ad0699f7842b1bd6f40aadd01e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136226
+  packageName: Robot Sphere
+  packageVersion: 1.3
+  assetPath: Assets/RobotSphere/Assets/Scripts/RobotFreeAnim.cs
+  uploadId: 350919
