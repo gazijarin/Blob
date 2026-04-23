@@ -87,7 +87,5 @@ public class BlobController : MonoBehaviour
         bool isWalking = horizontalSpeed > 0.1f;
 
         animator.SetBool("Walk_Anim", isWalking);
-
-        Debug.Log("Walk_Anim set to: " + isWalking + " (speed: " + horizontalSpeed + ")");
     }
 }
