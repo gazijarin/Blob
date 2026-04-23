@@ -1,8 +1,8 @@
-# Blob Divide
+# Blob 
 
 <div align="center">
 
-![Blob Divide Banner](https://via.placeholder.com/1200x300/2C3E50/ECF0F1?text=BLOB+DIVIDE)
+<img src="blob.png" alt="Project Banner" width="800">
 
 **A 3D puzzle platformer featuring a Blob with a split mechanic.**
 
