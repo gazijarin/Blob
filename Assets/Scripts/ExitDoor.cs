@@ -24,30 +24,26 @@ public class ExitDoor : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
 
-        if (gameManager == null)
-        {
-            Debug.LogError("GameManager not found in scene!");
-        }
+        #if UNITY_EDITOR
+        if (gameManager == null) Debug.LogError("GameManager not found in scene!");
+        #endif
 
         rend = GetComponent<Renderer>();
         if (rend != null)
         {
-
             doorMaterial = new Material(rend.material);
             doorMaterial.color = normalColor;
             rend.material = doorMaterial;
             currentColor = normalColor;
             targetColor = normalColor;
         }
-        else
-        {
-            Debug.LogError("Exit Door has no Renderer component!");
-        }
+        #if UNITY_EDITOR
+        else Debug.LogError("Exit Door has no Renderer component!");
+        #endif
     }
 
     void Update()
     {
-
         if (colorTransitionTime < colorChangeDuration)
         {
             colorTransitionTime += Time.deltaTime;
@@ -76,15 +72,15 @@ public class ExitDoor : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-
             if (gameManager != null)
             {
                 if (!gameManager.IsSplit())
                 {
-
+                    #if UNITY_EDITOR
                     Debug.Log("✅✅✅ MERGED BLOB ENTERED EXIT DOOR - LEVEL COMPLETE! ✅✅✅");
                     Debug.Log("Door glowing BRIGHT GREEN!");
-
+                    #endif
+                
                     levelComplete = true;
 
                     ChangeColor(completeColor);
@@ -99,28 +95,24 @@ public class ExitDoor : MonoBehaviour
                 }
                 else
                 {
-
+                    #if UNITY_EDITOR
                     Debug.Log("❌ EXIT DOOR REJECTED: Both blobs must MERGE first!");
                     Debug.Log("Current state: Blobs are SPLIT. Need: MERGED blob.");
-
+                    #endif
+                    
                     ChangeColor(rejectedColor);
                     Invoke("ResetColor", colorChangeDuration * 2);
                 }
             }
-            else
-            {
-                Debug.LogError("GameManager not found! Can't check if blob is merged.");
-            }
+            #if UNITY_EDITOR
+            else Debug.LogError("GameManager not found! Can't check if blob is merged.");
+            #endif
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") && !levelComplete)
-        {
-
-            ResetColor();
-        }
+        if (other.CompareTag("Player") && !levelComplete) ResetColor();
     }
 
     void ChangeColor(Color newColor)
@@ -135,11 +127,7 @@ public class ExitDoor : MonoBehaviour
         if (!levelComplete)
         {
             ChangeColor(normalColor);
-
-            if (doorMaterial != null)
-            {
-                doorMaterial.DisableKeyword("_EMISSION");
-            }
+            if (doorMaterial != null) doorMaterial.DisableKeyword("_EMISSION");
         }
     }
 }
