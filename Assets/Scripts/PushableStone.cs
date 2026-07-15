@@ -33,7 +33,10 @@ public class PushableStone : MonoBehaviour
         if (rb == null)
         {
             rb = gameObject.AddComponent<Rigidbody>();
+            
+            #if UNITY_EDITOR
             Debug.Log("Added Rigidbody to " + gameObject.name);
+            #endif
         }
 
         rb.mass = mass;
@@ -42,15 +45,9 @@ public class PushableStone : MonoBehaviour
         rb.useGravity = useGravity;
         rb.interpolation = RigidbodyInterpolation.Interpolate;
 
-        if (freezeRotation)
-        {
-            rb.constraints = RigidbodyConstraints.FreezeRotation;
-        }
+        if (freezeRotation) rb.constraints = RigidbodyConstraints.FreezeRotation;
 
-        if (groundLayer == 0)
-        {
-            groundLayer = LayerMask.GetMask("Ground");
-        }
+        if (groundLayer == 0) groundLayer = LayerMask.GetMask("Ground");
 
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null && (pushSound != null || slideSound != null))
@@ -60,14 +57,14 @@ public class PushableStone : MonoBehaviour
             audioSource.spatialBlend = 1f;
         }
 
+        #if UNITY_EDITOR
         Debug.Log("🪨 " + gameObject.name + " ready! Push Force: " + pushForceMultiplier);
+        #endif
     }
 
     void FixedUpdate()
     {
-
         CheckGrounded();
-
         float horizontalVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.z).magnitude;
 
         if (horizontalVelocity > 0.1f && slideSound != null && audioSource != null)
@@ -87,7 +84,6 @@ public class PushableStone : MonoBehaviour
 
     void CheckGrounded()
     {
-
         float checkDistance = GetComponent<Collider>().bounds.extents.y + groundCheckDistance;
         isGrounded = Physics.Raycast(transform.position, Vector3.down, checkDistance, groundLayer);
     }
@@ -97,25 +93,27 @@ public class PushableStone : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isBeingPushed = true;
-
             if (pushSound != null && audioSource != null)
             {
                 audioSource.PlayOneShot(pushSound);
             }
 
+            #if UNITY_EDITOR
             Debug.Log("💥 " + gameObject.name + " pushed by " + collision.gameObject.name);
+            #endif
         }
     }
 
     void OnCollisionStay(Collision collision)
     {
-
         if (collision.gameObject.CompareTag("Player"))
         {
-
             if (onlyPushWhenGrounded && !isGrounded)
             {
+                #if UNITY_EDITOR
                 Debug.Log("⚠️ Can't push - stone is airborne!");
+                #endif
+                
                 return;
             }
 
@@ -123,7 +121,6 @@ public class PushableStone : MonoBehaviour
 
             if (blobRb != null)
             {
-
                 Vector3 pushDirection = transform.position - collision.transform.position;
                 pushDirection.y = 0;
                 pushDirection.Normalize();
@@ -136,7 +133,10 @@ public class PushableStone : MonoBehaviour
                 if (pushForce > 0.1f)
                 {
                     rb.AddForce(pushDirection * pushForce, ForceMode.Force);
+
+                    #if UNITY_EDITOR
                     Debug.Log("⬆️ PUSHING! Force: " + pushForce.ToString("F1"));
+                    #endif
                 }
             }
         }
@@ -144,18 +144,14 @@ public class PushableStone : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            isBeingPushed = false;
-        }
+        if (collision.gameObject.CompareTag("Player")) isBeingPushed = false;
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Button"))
-        {
-            Debug.Log(gameObject.name + " is on a button!");
-        }
+        #if UNITY_EDITOR
+        if (other.CompareTag("Button")) Debug.Log(gameObject.name + " is on a button!");
+        #endif
     }
 
     void OnDrawGizmos()
