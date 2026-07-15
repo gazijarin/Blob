@@ -16,7 +16,10 @@ public class PressureButton : MonoBehaviour
             if (blobsOnButton == 1)
             {
                 totalButtonsPressed++;
+
+                #if UNITY_EDITOR
                 Debug.Log("Button pressed! Total buttons active: " + totalButtonsPressed);
+                #endif
             }
             UpdateButton();
         }
@@ -33,7 +36,10 @@ public class PressureButton : MonoBehaviour
             {
                 totalButtonsPressed--;
                 if (totalButtonsPressed < 0) totalButtonsPressed = 0;
+                
+                #if UNITY_EDITOR
                 Debug.Log("Button released! Total buttons active: " + totalButtonsPressed);
+                #endif
             }
             UpdateButton();
         }
@@ -43,10 +49,7 @@ public class PressureButton : MonoBehaviour
     {
         isPressed = blobsOnButton > 0;
 
-        if (gate != null)
-        {
-            gate.SetActive(totalButtonsPressed == 0);
-        }
+        if (gate != null) gate.SetActive(totalButtonsPressed == 0);
 
         float yScale = isPressed ? 0.08f : 0.1f;
         transform.localScale = new Vector3(1f, yScale, 1f);
