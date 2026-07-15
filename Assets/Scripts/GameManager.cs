@@ -47,11 +47,15 @@ public class GameManager : MonoBehaviour
                 controller.jumpForce = mergedJumpForce;
             }
 
+            #if UNITY_EDITOR
             Debug.Log("🎮 Blob spawned! WASD to move, SPACE to jump, E to split");
+            #endif
         }
         else
         {
+            #if UNITY_EDITOR
             Debug.LogError("Blob Prefab or Spawn Point not assigned!");
+            #endif
         }
     }
 
@@ -69,7 +73,10 @@ public class GameManager : MonoBehaviour
 
             if (blobA == null || blobB == null)
             {
+                #if UNITY_EDITOR
                 Debug.LogWarning("One blob was destroyed! Resetting split state.");
+                #endif
+                
                 isSplit = false;
                 hasShownCloseMessage = false;
                 return;
@@ -81,7 +88,10 @@ public class GameManager : MonoBehaviour
             {
                 if (!hasShownCloseMessage)
                 {
+                    #if UNITY_EDITOR
                     Debug.Log("💚 Blobs getting close! Distance: " + distance.ToString("F1") + " units (will merge at " + mergeDistance + ")");
+                    #endif
+                    
                     hasShownCloseMessage = true;
                 }
             }
@@ -93,7 +103,10 @@ public class GameManager : MonoBehaviour
 
             if (distance < mergeDistance)
             {
+                #if UNITY_EDITOR
                 Debug.Log("✅ MERGE TRIGGERED! Distance: " + distance.ToString("F1") + " units");
+                #endif
+                    
                 MergeBlobs();
             }
         }
@@ -104,7 +117,9 @@ public class GameManager : MonoBehaviour
         GameObject originalBlob = GameObject.FindGameObjectWithTag("Player");
         if (originalBlob == null)
         {
+            #if UNITY_EDITOR
             Debug.LogError("No blob found with Player tag!");
+            #endif
             return;
         }
 
@@ -158,6 +173,7 @@ public class GameManager : MonoBehaviour
         currentSplitTimer = splitTimer;
         hasShownCloseMessage = false;
 
+        #if UNITY_EDITOR
         Debug.Log("════════════════════════════════");
         Debug.Log("🎯 BLOB SPLIT!");
         Debug.Log("════════════════════════════════");
@@ -167,13 +183,17 @@ public class GameManager : MonoBehaviour
         Debug.Log("🔵 CYAN BLOB (BlobB): Arrow keys to move, RIGHT SHIFT to jump");
         Debug.Log("💡 TIP: Move blobs within " + mergeDistance + " units to auto-merge!");
         Debug.Log("════════════════════════════════");
+        #endif
     }
 
     void MergeBlobs()
     {
         if (blobA == null || blobB == null)
         {
+            #if UNITY_EDITOR
             Debug.LogWarning("Can't merge - one or both blobs missing");
+            #endif
+            
             isSplit = false;
             hasShownCloseMessage = false;
             return;
@@ -211,6 +231,7 @@ public class GameManager : MonoBehaviour
         isSplit = false;
         hasShownCloseMessage = false;
 
+        #if UNITY_EDITOR
         Debug.Log("════════════════════════════════");
         Debug.Log("✅ BLOBS MERGED!");
         Debug.Log("════════════════════════════════");
@@ -218,6 +239,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("🎮 Controls: WASD to move, SPACE to jump");
         Debug.Log("💡 Press E to split again, or find the exit door!");
         Debug.Log("════════════════════════════════");
+        #endif
     }
 
     public bool IsSplit()
@@ -227,10 +249,13 @@ public class GameManager : MonoBehaviour
 
     public void WinLevel()
     {
+        #if UNITY_EDITOR
         Debug.Log("════════════════════════════════");
         Debug.Log("🎉 LEVEL COMPLETE! 🎉");
         Debug.Log("════════════════════════════════");
         Debug.Log("Scene will reload in 2 seconds...");
+        #ndif
+        
         Invoke("ReloadScene", 2f);
     }
 
